@@ -15,5 +15,23 @@ namespace CSharpCorner.Entities
 
         public DbSet<Author> Authors { get; set; }
         public DbSet<Book> Books { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Author>().HasData(
+                new Author
+                {
+                    AuthorId = Guid.NewGuid(),
+                    FirstName = "Bob",
+                    LastName = "Ross",
+                    Genre = "Drama"
+                }, new Author
+                {
+                    AuthorId = Guid.NewGuid(),
+                    FirstName = "David",
+                    LastName = "Miller",
+                    Genre = "Fantasy"
+                });
+        }
     }
 }
