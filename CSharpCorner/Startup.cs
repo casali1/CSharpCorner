@@ -12,6 +12,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using CSharpCorner.Entities;
 using Microsoft.EntityFrameworkCore;
+using CSharpCorner.Repository.Contract;
+using CSharpCorner.Repository.Implementation;
 
 namespace CSharpCorner
 {
@@ -30,6 +32,8 @@ namespace CSharpCorner
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             services.AddDbContext<LibraryContext>(op => op.UseSqlServer(Configuration["ConnectionString:BookStoreDB"]));
+
+            services.AddScoped<ILibraryRepository, LibraryRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
