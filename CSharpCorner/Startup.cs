@@ -29,7 +29,7 @@ namespace CSharpCorner
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            services.AddDbContext<LibraryContext>(op => op.UseSqlServer(Configuration["ConnectionString:BookStoreDB"]));
+            services.AddDbContext<LibraryContext>(op => op.UseSqlServer(Configuration.GetConnectionString("LibraryContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
